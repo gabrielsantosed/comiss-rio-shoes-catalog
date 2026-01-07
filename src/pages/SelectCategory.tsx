@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import { useNavigate } from 'react-router-dom';
+import { User, UserRound } from 'lucide-react';
 
 const SelectCategory = () => {
   const navigate = useNavigate();
@@ -27,7 +28,9 @@ const SelectCategory = () => {
             onClick={() => handleSelect('masculino')}
             className="group relative overflow-hidden rounded-2xl bg-card border border-border p-8 md:p-12 transition-all duration-300 hover:border-primary hover:shadow-xl hover:shadow-primary/20 animate-slide-up"
           >
-            <div className="text-6xl md:text-8xl mb-4">👞</div>
+            <div className="flex justify-center mb-4">
+              <User className="w-16 h-16 md:w-24 md:h-24 text-primary" strokeWidth={1.5} />
+            </div>
             <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
               Masculino
             </h3>
@@ -42,7 +45,9 @@ const SelectCategory = () => {
             className="group relative overflow-hidden rounded-2xl bg-card border border-border p-8 md:p-12 transition-all duration-300 hover:border-primary hover:shadow-xl hover:shadow-primary/20 animate-slide-up"
             style={{ animationDelay: '0.1s' }}
           >
-            <div className="text-6xl md:text-8xl mb-4">👠</div>
+            <div className="flex justify-center mb-4">
+              <UserRound className="w-16 h-16 md:w-24 md:h-24 text-primary" strokeWidth={1.5} />
+            </div>
             <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
               Feminino
             </h3>

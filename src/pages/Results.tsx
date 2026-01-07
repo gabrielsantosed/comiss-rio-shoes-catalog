@@ -31,30 +31,27 @@ const Results = () => {
           <span>Voltar</span>
         </button>
 
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="flex items-center justify-center gap-2 mb-4">
+        <div className="mb-6 animate-fade-in">
+          <div className="flex items-center gap-2 mb-2">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium">
-              {category === 'masculino' ? '👞 Masculino' : '👠 Feminino'}
+              {category === 'masculino' ? 'Masculino' : 'Feminino'}
             </span>
             <span className="inline-block px-3 py-1 rounded-full bg-secondary text-foreground text-sm font-medium">
               Nº {selectedSize}
             </span>
           </div>
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
-            Resultados
-          </h2>
           <p className="text-muted-foreground text-sm">
             {filteredProducts.length} {filteredProducts.length === 1 ? 'produto encontrado' : 'produtos encontrados'}
           </p>
         </div>
 
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="flex flex-col gap-3">
             {filteredProducts.map((product, index) => (
               <div
                 key={product.id}
                 className="animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <ProductCard product={product} />
               </div>

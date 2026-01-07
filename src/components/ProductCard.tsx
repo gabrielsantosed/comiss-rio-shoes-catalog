@@ -13,62 +13,51 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link to={`/produto/${product.id}`} className="block">
-      <div className="card-product group">
-        <div className="relative aspect-square overflow-hidden">
+      <div className="flex gap-4 p-3 bg-card rounded-lg border border-border hover:border-primary/50 transition-all duration-300 group">
+        {/* Image */}
+        <div className="relative w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-secondary">
           <img
             src={product.images[0]}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          
-          {/* Badge */}
+        </div>
+
+        {/* Info */}
+        <div className="flex-1 min-w-0 flex flex-col justify-center">
+          <h3 className="font-display text-base font-semibold text-foreground line-clamp-1">
+            {product.name}
+          </h3>
+
+          {/* Badge inline */}
           {product.badge === 'promocao' && product.promoEndTime && (
-            <div className="absolute top-3 left-3 badge-promo rounded-md flex items-center gap-2">
-              <span>{discountPercentage}% OFF</span>
-              <span className="opacity-80">até</span>
+            <div className="flex items-center gap-1 text-xs text-primary mt-1">
+              <span className="text-primary">🔥</span>
+              <span>{discountPercentage}% OFF até</span>
               <CountdownTimer endTime={product.promoEndTime} />
             </div>
           )}
-          
+
           {product.badge === 'ultimas-unidades' && (
-            <div className="absolute top-3 left-3 badge-ultimas rounded-md">
+            <div className="text-xs text-warning mt-1">
               🔥 Últimas Unidades
             </div>
           )}
-        </div>
-        
-        <div className="p-4">
-          <h3 className="font-display text-lg font-semibold text-foreground mb-1 line-clamp-1">
-            {product.name}
-          </h3>
-          
-          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-            {product.description}
-          </p>
-          
-          <div className="flex items-baseline gap-2">
-            <span className="text-xl font-bold text-primary">
+
+          {!product.badge && (
+            <p className="text-xs text-muted-foreground line-clamp-1 mt-1">
+              {product.description}
+            </p>
+          )}
+
+          {/* Price */}
+          <div className="flex items-baseline gap-2 mt-2">
+            <span className="text-lg font-bold text-primary">
               R$ {product.price.toFixed(2).replace('.', ',')}
             </span>
             {product.originalPrice && (
-              <span className="text-sm text-muted-foreground line-through">
+              <span className="text-xs text-muted-foreground line-through">
                 R$ {product.originalPrice.toFixed(2).replace('.', ',')}
-              </span>
-            )}
-          </div>
-          
-          <div className="mt-3 flex flex-wrap gap-1">
-            {product.sizes.slice(0, 5).map((size) => (
-              <span
-                key={size}
-                className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground"
-              >
-                {size}
-              </span>
-            ))}
-            {product.sizes.length > 5 && (
-              <span className="text-xs px-2 py-1 rounded bg-secondary text-muted-foreground">
-                +{product.sizes.length - 5}
               </span>
             )}
           </div>
